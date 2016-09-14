@@ -8,6 +8,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.DAL
 {
+
     public class StoreDatabase : DbContext
     {
          public StoreDatabase(): base("StoreDatabase")
