@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApplication1.Models.Order>
+
+<h2>Order List</h2>
+<br />
+<br />
+<br />
+
+
+<p>
+    <h4> @Html.ActionLink("Create New Order", "Create")</h4>
+</p>
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    <h4>Search for an order  :</h4>
+    <br />
+
+    <p>
+        Game Name: @Html.TextBox("GameName")
+        User Name: @Html.TextBox("UserName")
+        Order Date: @Html.TextBox("OrderDate")
+            <br />
+        <input type="submit" value="Search" />
+
+    </p>
+
+}
+@Html.ActionLink("Show all orders", "Index")
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameTitle.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameTitle.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+        </td>
+    </tr>
+}
+
+</table>

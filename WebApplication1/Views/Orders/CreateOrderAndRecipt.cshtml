@@ -1,0 +1,25 @@
+﻿@model WebApplication1.Models.Order
+
+@{
+    ViewBag.Title = "CreateOrderAndRecipt";
+}
+
+<h1> Thank You for purchesing at  </h1> <img src=http://www.games4u.es/wp-content/uploads/2014/09/logo-games4u.png>
+<br /><br />
+<br /><br />
+<h2> Recipt Details: </h2>
+
+<br /><br />
+
+<h4><b>Order ID : @Model.OrderID</b></h4>
+<br />
+
+<h4><b>Order Date : @Model.OrderDate</b></h4>
+<br />
+
+<h4><b>Order Price : @Model.OrderPrice ₪</b></h4>
+<br />
+<h4><b>Product Name : @ViewBag.NameOfGame</b></h4>
+<br />
+<br />
+<input type="button" class="btn btn-primary" value="Click here to continue shoping" onclick="location.href='@Url.Action("Index", "Home")'" />

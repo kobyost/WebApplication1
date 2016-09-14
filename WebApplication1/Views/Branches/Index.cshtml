@@ -1,0 +1,102 @@
+﻿@model IEnumerable<WebApplication1.Models.Branch>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Stores List</h2>
+<br />
+<br />
+<br />
+
+@if (User.Identity.Name.Equals("Admin@gmail.com"))
+{ 
+<p>
+    <h4> @Html.ActionLink("Add New Store", "Create")</h4>
+</p>
+<br />
+<br />
+
+}
+
+@using (Html.BeginForm())
+{
+<h4>Search for a store:</h4>
+<p>
+    City:       @Html.TextBox("City")
+    Zip Code: @Html.TextBox("ZipCode")
+    Email:  @Html.TextBox("Email")
+    Phone Number:  @Html.TextBox("PhoneNumber")
+    <br />
+    <br />
+    <input type="submit" value="Search" />
+
+</p>
+}
+@Html.ActionLink("Show all stores", "Index")
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @if(User.Identity.Name.Equals("Admin@gmail.com"))
+        { 
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+@if(User.Identity.Name.Equals("Admin@gmail.com"))
+        {
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BranchID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BranchID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BranchID })
+        </td>
+}
+    </tr>
+}
+
+</table>

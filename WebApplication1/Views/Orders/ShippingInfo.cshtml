@@ -1,0 +1,25 @@
+﻿@model WebApplication1.Models.Customer
+
+@{
+    ViewBag.Title = "ShippingInfo";
+}
+
+<h2>Shipping Information</h2>
+<br /><br /><br />
+<h4><b>First Name :  @Model.FirstName</b></h4>
+<br />
+<h4><b>Last Name :  @Model.LastName</b></h4>
+<br />
+
+<div style="float: right;">
+    <img src=http://www.dsscargo.com/images/carrier.jpg width=300 height=400>
+</div>
+<h4><b>Phone Number :  @Model.PhoneNumber</b></h4>
+<br />
+<h4><b>City :  @Model.City</b></h4>
+<br />
+<h4><b>Address :  @Model.Address</b></h4>
+<br />
+<h4><b>Zip Code :  @Model.ZipCode</b></h4>
+<br /><br /><br /><br />
+<input type="button" class="btn btn-primary" value="Confrim Purchase" onclick="location.href='@Url.Action("CreateOrderAndRecipt", "Orders", new { id = @ViewBag.GameTitleId })'" />

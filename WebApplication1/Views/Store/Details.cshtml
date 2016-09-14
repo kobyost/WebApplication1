@@ -1,0 +1,39 @@
+﻿@model WebApplication1.Models.GameTitle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2> Game Details : </h2>
+
+<div id="game-details">
+    <p>
+       
+        <div style="float: right;">
+            <img src=@Model.ImageUrl width=300 height=400>
+        </div>
+        <b>Name:</b>  @Model.Name
+        <br />
+        <b>Developed By:</b>  @Model.DevelopedBy
+            <br />
+        <b>Genre:</b> @Model.Genre
+            <br />
+        <b>Rating:</b> @Model.Rating
+            <br />
+        <b>Platform:</b> @Model.Platform
+            <br />
+        <b>Release Date:</b>  @Model.ReleaseDate.ToString("dd-MM-yyyy")
+            <br />
+        <b>Price:</b>  @Model.Price ₪
+            <input type="button" value="Click To Buy" onclick="location.href='@Url.Action("ShippingInfo", "Orders", new { id = @Model.GameTitleID})'" />
+            <br />
+            <br />
+            <br />
+        <b>Description:</b>
+        <br/>
+        @Model.Description
+            <br />
+            <br />
+            <iframe width="500" height="500" src=@Model.VideoUrl frameborder="0"></iframe>
+</p>
+</div>

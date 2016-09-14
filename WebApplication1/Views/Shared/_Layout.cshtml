@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Games4U</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Sidebar CSS -->
+    <link href="~/Content/simple-sidebar.css" rel="stylesheet">
+    <!-- Footer CSS -->
+    <link href="~/Content/simple-footer.css" rel="stylesheet">
+    <!-- Site CSS -->
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Games4U", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div id="fb-root"></div>
+            <script>
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("PC", "PC", "Store")</li>
+                    <li>@Html.ActionLink("PS4", "PS4", "Store")</li>
+                    <li>@Html.ActionLink("Xbox One", "XboxOne", "Store")</li>
+                    <li>@Html.ActionLink("Wii U", "WiiU", "Store")</li>
+                    @if (User.Identity.Name.Equals("Admin@gmail.com"))
+                    {
+                        <li>@Html.ActionLink("Add Game", "Create", "GameTitles")</li>
+                        <li>@Html.ActionLink("Create Customer", "Create", "Customers")</li>
+                        <li>@Html.ActionLink("Create Order", "Create", "Orders")</li>
+                        <li>@Html.ActionLink("Add Store", "Create", "Branches")</li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+
+
+            </div>
+
+        </div>
+    </div>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="@Url.Action("Index", "Home")"><h3>Home</h3></a>
+                    <a href="@Url.Action("Events", "Home")">Gaming Events</a>
+                    <a href="@Url.Action("Chart", "Home")">Statistics Chart</a>
+                     @if (User.Identity.Name.Equals("Admin@gmail.com"))
+                     {
+                        <a href="@Url.Action("ManagerChart", "Home")">Admin Chart</a>
+
+                     }
+
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Sidebar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <div style="float: right;">
+        <div class="fb-like" data-href="https://www.facebook.com/Games4Ugamesstore" data-layout="standard" data-action="like" data-show-faces="true" data-share="true">
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+
+
+
+    <div class="wrapper">
+        <div class="container">
+
+        </div>
+        <div class="push"><!--//--></div>
+    </div>
+    <footer>
+        <div class="container">
+            Copyright © 2015 by Games4U.com &nbsp;  @Html.ActionLink("Contact us", "Contact", "Home")&nbsp; please check what are we about &nbsp; @Html.ActionLink("About", "About", "Home")
+
+        </div>
+    </footer>
+
+
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

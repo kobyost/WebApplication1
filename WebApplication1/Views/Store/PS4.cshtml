@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebApplication1.Models.GameTitle>
+
+    @{
+        ViewBag.Title = "PS4";
+    }
+
+    <h2>PS4 Games</h2>
+<br />
+<br />
+    <div class="row">
+
+        @foreach (var game in Model)
+        {
+            <div class="col-sm-3 col-lg-3 col-md-3" style="margin-bottom:50px;">
+                <div class="thumbnail">
+                    <img src=@game.ImageUrl>
+                    <div class="caption">
+                        <h4 class="pull-right">$@game.Price</h4>
+                        <h4>
+                            <a href="@Url.Action("Details", new { id = game.GameTitleID })">@game.Name</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>

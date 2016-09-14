@@ -1,0 +1,106 @@
+﻿@model IEnumerable<WebApplication1.Models.GameTitle>
+
+
+<h2>Game Titles</h2>
+<br />
+<br />
+<br />
+
+<p>
+
+    
+    <h4> @Html.ActionLink("Add New Title", "Create")</h4>
+</p>
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    <h4>Game Search:</h4>
+    
+
+    <p>
+        Title: @Html.TextBox("title")
+        Platfrom: @Html.DropDownList("platform","All")
+        Genre: @Html.DropDownList("GameGenre", "All")
+        Price: @Html.DropDownList("GamePrice", "All")
+         <br /><br />
+        <input type="submit" value="Search" />
+
+    </p>
+
+}
+
+@Html.ActionLink("Show all games", "Index")
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DevelopedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Platform)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DevelopedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Platform)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VideoUrl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GameTitleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GameTitleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GameTitleID })
+        </td>
+    </tr>
+}
+
+</table>
